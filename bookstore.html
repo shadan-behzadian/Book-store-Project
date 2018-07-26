@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Store</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
+    <!--    for fancy box to work you need jquery library first otherwise it wont work YOU HAD THIS PROBLEM-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="bookstore.css">
+
+</head>
+<div class="center">
+
+    <body>
+        <div class="row">
+            <img class="col-lg-2 col-md-3 col-sm-4 col-xs-12" class="img-rounded" src="book-store-logo.jpg" alt="Book store">
+        </div>
+        <div id="eachBook" class="row">
+            <div class="container-fluid" class="row">
+                <input class="inputbox" type="text" v-model="search" placeholder="  search...">
+                <!--            to add search box you used vue js ninja video-->
+            </div>
+            <div v-if="filterdBooks.length == 0 && (search !='')">No Data is Found</div>
+            <div v-else>
+                <div v-for="book in  filterdBooks" class="myf1_container col-sm-4">
+
+                    <div class="myf1_card">
+                        <div class="myfront myface">
+                            <div>
+                                <img v-bind:src="book.portada" class="bookCover">
+                            </div>
+                        </div>
+
+                        <div class="myback myface">
+                            <div class="myTextBlock">
+                                <p class="title">{{book.titulo}}</p>
+                                <p class="description">{{book.descripcion}}</p>
+                            </div>
+                            <a data-fancybox="gallery" v-bind:href="book.detalle" class="button">Más Info</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="bookstore.js"></script>
+    </body>
+</div>
+
+</html>
